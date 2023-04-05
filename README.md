@@ -23,7 +23,7 @@ It displays the ads which has been recently posted by the users.
 
 ![detaile ad](https://user-images.githubusercontent.com/85643531/230182287-2922b33a-5b09-413a-be0a-6c8eeadb45ca.png)
 ![related ad](https://user-images.githubusercontent.com/85643531/230182364-48a4dc3a-3c61-4d5e-9cbd-766eb0015f36.png)
-When we click on the ad the details of the property and the related properties can be seen on this page.
+When we click on the ad the details of the property and the related properties can be seen on this page,and you can also like the property and add it to your wishlist.
 <br/>
 <br/>
 <br/>
