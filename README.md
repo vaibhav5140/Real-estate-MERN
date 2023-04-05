@@ -1,4 +1,4 @@
-                                                            REAL ESTATE MERN WEB
+                                                    REAL ESTATE MERN WEB
 <br/>
 
 ![Screenshot (296)](https://user-images.githubusercontent.com/85643531/230178503-6ea12b36-a9a7-49d7-a499-41217cdc7069.png)
