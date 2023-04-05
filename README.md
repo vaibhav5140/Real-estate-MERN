@@ -5,8 +5,6 @@ We can register by entering the details and the veification link will be sent to
 ![Login](https://user-images.githubusercontent.com/85643531/230177627-11215978-a871-4a66-8c47-25f87b171199.png)
 We can login through this page and if we click on forget password, password reset link will be sent to your registered email.
 &nbsp
-&nbsp
-&nbsp
 ![for rent](https://user-images.githubusercontent.com/85643531/230179785-a395bd9a-b47d-4389-a840-57293b700377.png)
 ![for sell](https://user-images.githubusercontent.com/85643531/230179912-e47589e0-6ae0-46f4-a139-5e5a5f77a1f5.png)
 
