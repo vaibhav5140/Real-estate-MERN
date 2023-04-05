@@ -13,10 +13,12 @@ We can login through this page and if we click on forget password, password rese
 <br/>
 <br/>
 
+<br/>
 HOME PAGE
 ![for rent](https://user-images.githubusercontent.com/85643531/230179785-a395bd9a-b47d-4389-a840-57293b700377.png)
 ![for sell](https://user-images.githubusercontent.com/85643531/230179912-e47589e0-6ae0-46f4-a139-5e5a5f77a1f5.png)
 It displays the ads which has been recently posted by the users.
+<br/>
 <br/>
 <br/>
 ![detaile ad](https://user-images.githubusercontent.com/85643531/230182287-2922b33a-5b09-413a-be0a-6c8eeadb45ca.png)
@@ -24,9 +26,11 @@ It displays the ads which has been recently posted by the users.
 When we click on the ad the details of the property and the related properties can be seen on this page.
 <br/>
 <br/>
+<br/>
 ![ad create](https://user-images.githubusercontent.com/85643531/230183216-0e11a4a5-2ac9-4c13-b03f-e568415d7298.png)
 ![sell house](https://user-images.githubusercontent.com/85643531/230183280-3f6b80e1-2b6c-451b-895a-aa94cf9c2506.png)
 We can choose type of property and post our ad accordingly.
+<br/>
 <br/>
 <br/>
 
