@@ -6,7 +6,7 @@ We can register by entering the details and the veification link will be sent to
 <br/>
 <br/>
 <br/>
-<br/>
+
 
 ![Login](https://user-images.githubusercontent.com/85643531/230177627-11215978-a871-4a66-8c47-25f87b171199.png)
 We can login through this page and if we click on forget password, password reset link will be sent to your registered email.
