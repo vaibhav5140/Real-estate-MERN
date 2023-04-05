@@ -30,10 +30,14 @@ When we click on the ad the details of the property and the related properties c
 ![ad create](https://user-images.githubusercontent.com/85643531/230183216-0e11a4a5-2ac9-4c13-b03f-e568415d7298.png)
 ![sell house](https://user-images.githubusercontent.com/85643531/230183280-3f6b80e1-2b6c-451b-895a-aa94cf9c2506.png)
 We can choose type of property and post our ad accordingly,for storing the uploaded images it uses S3 service of AWS.\
-
 <br/>
 <br/>
+<br/>
 
+![profile](https://user-images.githubusercontent.com/85643531/230184739-f5aa52df-8ade-4933-894e-42e2b737e654.png)
+![settings](https://user-images.githubusercontent.com/85643531/230184912-1297143f-b2f6-479b-89f5-6ce3c7e5c937.png)
+
+We can update our profile and password.
 
 
 
