@@ -27,6 +27,10 @@ import { useNavigate } from "react-router-dom";
 
     <nav className="nav d-flex justify-content-between lead">
   <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
+  <NavLink className="nav-link" aria-current="page" to="/search">Search</NavLink>
+  <NavLink className="nav-link" aria-current="page" to="/buy">Buy</NavLink>
+  <NavLink className="nav-link" aria-current="page" to="/rent">Rent</NavLink>
+  <NavLink className="nav-link" aria-current="page" to="/agents">Agents</NavLink>
   <a className="nav-link" onClick={handlePostAdClick} href="#">Post Ad</a>
   {!loggedIn ? (<><NavLink className="nav-link" to="/login">Login</NavLink>
   <NavLink className="nav-link" to="/register">Register</NavLink></>):("")}

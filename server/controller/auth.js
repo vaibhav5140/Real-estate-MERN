@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { emailTemplate } from "../helper/email.js";
 import { hashPassword, comparePassword } from "../helper/auth.js";
 import User from "../models/user.js";
+import Ad from "../models/ad.js";
 import { nanoid } from "nanoid";
 import validator from "email-validator";
 
@@ -109,6 +110,9 @@ export const login = async (req, res) => {
     const user = await User.findOne({ email });
     // 2 compare password
     const match = await comparePassword(password, user.password);
+    if(!user){
+      return res.json({error:"No user Found.Please Register"})
+    }
     if (!match) {
       return res.json({ error: "Wrong password" });
     }
@@ -248,3 +252,36 @@ export const updateProfile=async(req,res)=>{
     }
   }
 }
+export const agents = async (req, res) => {
+  try {
+    const agents = await User.find({ role: "Seller" }).select(
+      "-password -role -enquiredProperties -wishlist -photo.key -photo.Key -photo.Bucket"
+    );
+    res.json(agents);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const agentAdCount = async (req, res) => {
+  try {
+    const ads = await Ad.find({ postedBy: req.params._id }).select("_id");
+    res.json(ads);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const agent = async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username }).select(
+      "-password -role -enquiredProperties -wishlist -photo.key -photo.Key -photo.Bucket"
+    );
+    const ads = await Ad.find({ postedBy: user._id }).select(
+      "-photos.key -photos.Key -photos.ETag -photos.Bucket"
+    );
+    res.json({ user, ads });
+  } catch (err) {
+    console.log(err);
+  }
+};

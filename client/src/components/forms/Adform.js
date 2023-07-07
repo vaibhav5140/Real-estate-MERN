@@ -6,7 +6,9 @@ import ImageUpload from "./imageUpload";
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
 import toast from "react-hot-toast"
+import { useAuth } from "../../context/auth";
 export default function AdForm({action,type}){
+  const [auth, setAuth] = useAuth();
 //state
 const[ad,setAd]=useState({
     photos: [],
@@ -37,9 +39,21 @@ const handleClick=async()=>{
     setAd({...ad,loading:false});
   }
   else{
-    toast.success("Ad created successfully")
-    setAd({...ad,loading:false});
-    navigate("/dashboard");
+     // data {user, ad}
+
+        // update user in context
+        setAuth({ ...auth, user: data.user });
+        // update user in local storage
+        const fromLS = JSON.parse(localStorage.getItem("auth"));
+        fromLS.user = data.user;
+        localStorage.setItem("auth", JSON.stringify(fromLS));
+
+        toast.success("Ad created successfully");
+        setAd({ ...ad, loading: false });
+        // navigate("/dashboard");
+
+        // reload page on redirect
+        window.location.href = "/dashboard";
   }
   }
   catch(err){
@@ -130,7 +144,7 @@ onChange={(e)=>setAd({...ad,  description:e.target.value})}/>
 
 
 <button onClick={handleClick} className={`btn btn-primary mb-5 ${ad.loading? "disabled":"" } `}>{ad.loading?"Saving...":"Submit"}</button>
-      <pre>{JSON.stringify(ad, null, 4)}</pre>
+      {/* <pre>{JSON.stringify(ad, null, 4)}</pre> */}
     </>
 )
 }

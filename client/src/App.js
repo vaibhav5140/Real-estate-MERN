@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AuthProvider } from "./context/auth";
+import { SearchProvider } from "./context/search";
 import Main from "./components/nav/main";
 import {Toaster} from "react-hot-toast";
 import AccountActivate from "./pages/auth/activateAccount";
@@ -19,10 +20,23 @@ import Adview from "./pages/AdView";
 import Footer from "./components/nav/footer";
 import Profile from "./pages/user/Profile";
 import Settings from "./pages/user/settings";
+import AdEdit from "./pages/user/ad/AdEdit";
+import Wishlist from "./pages/user/wishlist";
+import Enquiries from "./pages/user/enquiries";
+import Agents from "./pages/Agents";
+import Agent from "./pages/Agent";
+import Buy from "./pages/Buy";
+import Rent from "./pages/Rent";
+import Search from "./pages/Search";
+const PageNotFound = () => (
+  <div className="text-center p-5">404 PAGE NOT FOUND!</div>
+);
+
 function App() {
   return (
     <BrowserRouter>
     <AuthProvider>
+    <SearchProvider>
     <Main/>
     <Toaster/>
     <Routes>
@@ -43,11 +57,23 @@ function App() {
       <Route path="ad/create/rent/Land" element={<RentLand/>}/>
       <Route path="user/profile" element={<Profile/>}/>
       <Route path="user/settings" element={<Settings/>}/>
+      <Route path="user/ad/:slug" element={<AdEdit />} />
+      <Route path="user/wishlist" element={<Wishlist />} />
+        <Route path="user/enquiries" element={<Enquiries />} />
+
       </Route>
 
       <Route path="/ad/:slug" element={<Adview/>}/>
+      <Route path="/agents" element={<Agents/>}/>
+      <Route path="/agent/:username" element={<Agent />} />
+      <Route path="/buy" element={<Buy />} />
+            <Route path="/rent" element={<Rent />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="*" element={<PageNotFound />} />
+
     </Routes>
     <Footer/>
+    </SearchProvider>
     </AuthProvider>
     </BrowserRouter>
     

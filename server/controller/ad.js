@@ -4,6 +4,7 @@ import Ad from "../models/ad.js";
 import User from "../models/user.js"
 import slugify from "slugify";
 import ad from "../models/ad.js";
+import { emailTemplate } from "../helper/email.js";
 export const uploadImage = async (req, res) => {
   try {
     // console.log(req.body);
@@ -191,3 +192,202 @@ export const removeFromWishlist=async(req,res)=>{
   console.log(err);
   }
   }
+
+  export const contactSeller = async (req, res) => {
+    try {
+      const { name, email, message, phone, adId } = req.body;
+      const ad = await Ad.findById(adId).populate("postedBy", "email");
+  
+      const user = await User.findByIdAndUpdate(req.user._id, {
+        $addToSet: { enquiredProperties: adId },
+      });
+  
+      if (!user) {
+        return res.json({ error: "Could not find user with that email" });
+      } else {
+        // send email
+        config.AWSSES.sendEmail(
+          emailTemplate(
+            ad.postedBy.email,
+            `
+          <p>You have received a new customer enquiry regarding your property</p>
+  
+            <h4>Customer details</h4>
+            <p>Name: ${name}</p>
+            <p>Email: ${email}</p>
+            <p>Phone: ${phone}</p>
+            <p>Message: ${message}</p>
+  
+          <a href="${config.CLIENT_URL}/ad/${ad.slug}">${ad.type} in ${ad.address} for ${ad.action} ${ad.price}</a>
+          `,
+            email,
+            "New enquiry received"
+          ),
+          (err, data) => {
+            if (err) {
+              console.log(err);
+              return res.json({ ok: false });
+            } else {
+              console.log(data);
+              return res.json({ ok: true });
+            }
+          }
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  export const userAds = async (req, res) => {
+    try {
+      const perPage = 3;
+      const page = req.params.page ? req.params.page : 1;
+  
+      const total = await Ad.find({ postedBy: req.user._id });
+  
+      const ads = await Ad.find({ postedBy: req.user._id })
+        .populate("postedBy", "name email username phone company")
+        .skip((page - 1) * perPage)
+        .limit(perPage)
+        .sort({ createdAt: -1 });
+  
+      res.json({ ads, total: total.length });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  export const update = async (req, res) => {
+    try {
+      const { photos, price, type, address, description } = req.body;
+  
+      const ad = await Ad.findById(req.params._id);
+  
+      const owner = req.user._id == ad?.postedBy;
+  
+      if (!owner) {
+        return res.json({ error: "Permission denied" });
+      } else {
+        // validation
+        if (!photos.length) {
+          return res.json({ error: "Photos are required" });
+        }
+        if (!price) {
+          return res.json({ error: "Price is required" });
+        }
+        if (!type) {
+          return res.json({ error: "Is property hour or land?" });
+        }
+        if (!address) {
+          return res.json({ error: "Address is required" });
+        }
+        if (!description) {
+          return res.json({ error: "Description are required" });
+        }
+  
+       // const geo = await config.GOOGLE_GEOCODER.geocode(address);
+  
+        await ad.update({
+          ...req.body,
+          slug: ad.slug,
+          // location: {
+          //   type: "Point",
+          //   coordinates: [geo?.[0]?.longitude, geo?.[0]?.latitude],
+          // },
+        });
+  
+        res.json({ ok: true });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  export const enquiriedProperties = async (req, res) => {
+    try {
+      const user = await User.findById(req.user._id);
+      const ads = await Ad.find({ _id: user.enquiredProperties }).sort({
+        createdAt: -1,
+      });
+      res.json(ads);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  export const remove = async (req, res) => {
+    try {
+      const ad = await Ad.findById(req.params._id);
+      const owner = req.user._id == ad?.postedBy;
+  
+      if (!owner) {
+        return res.json({ error: "Permission denied" });
+      } else {
+        await Ad.findByIdAndRemove(ad._id);
+        res.json({ ok: true });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  export const wishlist = async (req, res) => {
+    try {
+      const user = await User.findById(req.user._id);
+      const ads = await Ad.find({ _id: user.wishlist }).sort({
+        createdAt: -1,
+      });
+      res.json(ads);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  export const adsForSell = async (req, res) => {
+    try {
+      const ads = await Ad.find({ action: "Sell" })
+        .select("-googleMap -location -photo.Key -photo.key -photo.ETag")
+        .sort({ createdAt: -1 })
+        .limit(24);
+  
+      res.json(ads);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  export const adsForRent = async (req, res) => {
+    try {
+      const ads = await Ad.find({ action: "Rent" })
+        .select("-googleMap -location -photo.Key -photo.key -photo.ETag")
+        .sort({ createdAt: -1 })
+        .limit(24);
+  
+      res.json(ads);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  export const search = async (req, res) => {
+    try {
+      console.log("req query", req.query);
+      const { action, address, type, priceRange } = req.query;
+
+  
+      const ads = await Ad.find({
+        action: action === "Buy" ? "Sell" : "Rent",
+        type,
+        price: {
+          $gte: parseInt(priceRange[0]),
+          $lte: parseInt(priceRange[1]),
+        },
+        
+        address: { $regex: new RegExp(address, "i") }
+      })
+        .limit(24)
+        .sort({ createdAt: -1 })
+        .select(
+          "-photos.key -photos.Key -photos.ETag -photos.Bucket "
+        );
+       console.log(ads);
+      res.json(ads);
+    } catch (err) {
+      console.log();
+    }
+  };

@@ -10,3 +10,6 @@
   object-fit: cover;
   height: 400px !important;
 }
+.square {
+  border-radius: 0px;
+}

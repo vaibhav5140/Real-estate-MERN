@@ -2,6 +2,7 @@ import { useAuth } from "../context/auth";
 import { useEffect,useState } from "react";
 import axios from "axios";
 import AdCard from "../components/cards/adCrad";
+import SearchForm from "../components/forms/SearchForm";
 function Home() {
 //context
     const[auth,setAuth]=useAuth();
@@ -26,6 +27,7 @@ function Home() {
     }
     return (
       <div>
+              <SearchForm />
       <h1 className="display-1 bg-primary text-light p-5">For Sell</h1>
       <div className="container"><div className="row">
         {adsforSell?.map((ad)=>(

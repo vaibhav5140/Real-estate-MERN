@@ -6,12 +6,18 @@ import Sidebar from "../../components/nav/sideBar";
 export default function Settings() {
   // state
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
+      if (password !== confirmPassword) {
+        toast.error("Passwords do not match");
+        setLoading(false);
+        return;
+      }
       const { data } = await axios.put("/updatePassword", {
         password,
       });
@@ -27,7 +33,6 @@ export default function Settings() {
       setLoading(false);
     }
   };
-
   return (
     <>
       <h1 className="display-1 bg-primary text-light p-5">Settings</h1>
@@ -44,7 +49,13 @@ export default function Settings() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-
+                 <input
+  type="password"
+  placeholder="Confirm your password"
+  className="form-control mb-4"
+  value={confirmPassword}
+  onChange={(e) => setConfirmPassword(e.target.value)}
+/>
                 <button
                   className="btn btn-primary col-12 mb-4"
                   disabled={loading}
