@@ -11,8 +11,8 @@ const app=express();
 app.use(express.json({limit:"10mb"}));
 app.use(morgan("dev"));
 app.use(cors());
-//app.get("/api",(req,res)=>{res.json({message:'HI FROM SERVER'})});
+app.get("/api",(req,res)=>{res.json({message:'HI FROM SERVER'})});
 app.use('/api',authroutes);
-app.use('/test',(req,res)=>{res.json({message:'vaibhav'})});
+
 app.use('/api',adroutes);
-app.listen(5000,"localhost",()=>console.log("server is running on port 5000"));
+app.listen(5000,()=>console.log("server is running on port 5000"));
