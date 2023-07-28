@@ -1,7 +1,7 @@
 <h1 align="center">REAL ESTATE MERN WEB</h1>
 <br/>
 
-![Watch the video](https://drive.google.com/file/d/1GTrDfuj9UDyTxY7orzbxpjCybFMqAMRY/view?usp=sharing)
+[!Watch the video]( https://drive.google.com/file/d/1GTrDfuj9UDyTxY7orzbxpjCybFMqAMRY/view?usp=sharing)
 
 ![Screenshot (296)](https://user-images.githubusercontent.com/85643531/230178503-6ea12b36-a9a7-49d7-a499-41217cdc7069.png)
 We can register by entering the details and the veification link will be sent to your email and for this it uses AWS (email as service).
