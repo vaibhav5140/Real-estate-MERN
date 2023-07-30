@@ -49,7 +49,7 @@ Add the following environment variables to the .env file:<br><br>
 AWS_ACCESS_KEY={aws_access_key} # Replace with your AWS Access Key<br>
 AWS_SECRET_KEY={aws_secret_key} # Replace with your AWS Secret Key<br>
 DATABASE_URI={mongodb_connection_string} # Replace with your MongoDB connection string<br>
-JWT_SECRET={your_jwt_secret_key} # Replace with your preferred JWT secret key<br>
+JWT_SECRET_KEY={your_jwt_secret_key} # Replace with your preferred JWT secret key<br>
 <h4>Usage</h4>
 To start the backend server, run the following command:<br>
 <strong>npm run start</strong><br>
