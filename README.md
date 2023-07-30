@@ -1,45 +1,65 @@
-<h1 align="center">REAL ESTATE MERN WEB</h1>
+<h1 align="center">Welcome to the Real Estate Listing Platform on GitHub!🏠</h1>
 <br/>
+<h2>Problem</h2>
+The users in the real estate market faced significant challenges in both property buying and renting processes. The absence of a centralized and user-friendly platform hindered property sellers from effectively listing their properties, while prospective buyers struggled to find suitable properties. Similarly, renters encountered difficulties in finding rental properties, and property owners faced challenges in efficiently listing their rental units.
+The lack of a seamless platform caused significant time wastage and frustrations for all parties involved, leading to a disconnect between property sellers, buyers, landlords, and tenants. Additionally, the absence of reliable resources hindered their ability to inquire about available properties or rental units efficiently.<br>
+<h2>Solution</h2>
+Our dynamic Real Estate Listing Platform bridges the gap between property sellers and buyers, offering a centralized platform where property owners can list their properties for sale or rent. Prospective buyers can easily search for available properties using advanced filters, view virtual tours, and communicate directly with property owners. Thus making the property renting and buying process efficient and hassle-free.
+<h2>About the Project</h2>
+Built with the MERN stack, this platform combines the efficiency of React.js for the frontend and the robustness of Express.js for the backend. Seamlessly integrating AWS services, including SES for email sending during registration and password reset, and S3 for secure storage of property photos, we ensure a smooth and secure user experience. Platform's database leverages MongoDB, ensuring optimal data management and retrieval for a seamless property listing and search experience.
+<h2>Guest User</h2>
+<p align="center"> 
+  <img src="https://github.com/vaibhav5140/Real-estate-MERN/assets/85643531/fa63294e-0df4-453a-be0b-6d8bb8eb1854"/>
+ </p> 
 
-[[!video]( https://drive.google.com/file/d/1GTrDfuj9UDyTxY7orzbxpjCybFMqAMRY/view?usp=sharing)
+<h2>Logged In User</h2>
+<p align="center"> 
+  <img src="https://github.com/vaibhav5140/Real-estate-MERN/assets/85643531/87224039-f44b-4aa1-a791-72b8d18314e7"/>
+ </p> 
+<h2>UML Activity Diagram</h2><br>
 
-![Screenshot (296)](https://user-images.githubusercontent.com/85643531/230178503-6ea12b36-a9a7-49d7-a499-41217cdc7069.png)
-We can register by entering the details and the veification link will be sent to your email and for this it uses AWS (email as service).
-<br/>
-<br/>
-<br/>
+![Screenshot (488)](https://github.com/vaibhav5140/Real-estate-MERN/assets/85643531/f7f3b0e2-9af0-4fbd-84da-5cab3a2df02c)
 
-![Login](https://user-images.githubusercontent.com/85643531/230177627-11215978-a871-4a66-8c47-25f87b171199.png)
-We can login through this page and if we click on forget password, password reset link will be sent to your registered email.
-<br/>
-<br/> 
-<br/>
+<h2>Project Limitation</h2>
 
-HOME PAGE
-![for rent](https://user-images.githubusercontent.com/85643531/230179785-a395bd9a-b47d-4389-a840-57293b700377.png)
-![for sell](https://user-images.githubusercontent.com/85643531/230179912-e47589e0-6ae0-46f4-a139-5e5a5f77a1f5.png)
-It displays the ads which has been recently posted by the users.
-<br/>
-<br/>
-<br/>
+Please be aware thatthe project employs the AWS SES (Simple Email Service) free service to send emails for user email verification during registration, property enquiries, and password reset. However, the free service is limited to sending emails only to pre-registered email addresses within AWS SES. Therefore, users must use email addresses already registered in AWS to receive verification and communication emails effectively.
+To ensure that users can explore and tour the website without email verification hurdles, these are credentials for accessing the site:
+<br>
+Email: ahujavaibhav825@gmail.com<br>
+Password: Vaibhav@123<br>
+Please note that our project is hosted on a free platform, which may result in slightly longer loading times.
+<h2>Deployed Link</h2>
+https://real-estate-mern.vercel.app/
 
-![detaile ad](https://user-images.githubusercontent.com/85643531/230182287-2922b33a-5b09-413a-be0a-6c8eeadb45ca.png)
-![related ad](https://user-images.githubusercontent.com/85643531/230182364-48a4dc3a-3c61-4d5e-9cbd-766eb0015f36.png)
-When we click on the ad the details of the property and the related properties can be seen on this page,and you can also like the property and add it to your wishlist.
-<br/>
-<br/>
-<br/>
 
-![ad create](https://user-images.githubusercontent.com/85643531/230183216-0e11a4a5-2ac9-4c13-b03f-e568415d7298.png)
-![sell house](https://user-images.githubusercontent.com/85643531/230183280-3f6b80e1-2b6c-451b-895a-aa94cf9c2506.png)
-We can choose type of property and post our ad accordingly,for storing the uploaded images it uses S3 service of AWS.\
-<br/>
-<br/>
-<br/>
+<h2>Project Setup</h2>
 
-![profile](https://user-images.githubusercontent.com/85643531/230184739-f5aa52df-8ade-4933-894e-42e2b737e654.png)
-![settings](https://user-images.githubusercontent.com/85643531/230184912-1297143f-b2f6-479b-89f5-6ce3c7e5c937.png)
-We can update our profile and password.
+<h4>Prerequisites</h4>
+Node.js (Version 14 or higher)<br>
+npm (Node Package Manager)
+<h4>Installation</h4>
+Clone the repository to your local machine:<br>
+git clone {repository_url.git} <br>
+cd {project_directory}
+<h4>Install project dependencies using npm:</h4>
+npm install
+<h4>Configuration</h4>
+Create a .env file in the root of your project directory.<br>
+Add the following environment variables to the .env file:<br><br>
+AWS_ACCESS_KEY={aws_access_key} # Replace with your AWS Access Key<br>
+AWS_SECRET_KEY={aws_secret_key} # Replace with your AWS Secret Key<br>
+DATABASE_URI={mongodb_connection_string} # Replace with your MongoDB connection string<br>
+JWT_SECRET={your_jwt_secret_key} # Replace with your preferred JWT secret key<br>
+<h4>Usage</h4>
+To start the backend server, run the following command:<br>
+<strong>npm run start</strong><br>
+The server will automatically reload whenever you make changes to the code, thanks to nodemon.
+<br><br>
+To start the frontend server, run the following command:<br>
+<strong> npm start </strong><br>
+For more information refer README.md in client folder
 
+<h2>Backend Server Documentation</h2>
+https://docs.google.com/document/d/1lLi14Z_F5m1ttf5935ht0Tz_rA_Sc5ZsYGnCUHVugWY/edit?usp=sharing
 
 
