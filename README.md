@@ -22,7 +22,7 @@ Built with the MERN stack, this platform combines the efficiency of React.js for
 
 <h2>Project Limitation</h2>
 
-Please be aware thatthe project employs the AWS SES (Simple Email Service) free service to send emails for user email verification during registration, property enquiries, and password reset. However, the free service is limited to sending emails only to pre-registered email addresses within AWS SES. Therefore, users must use email addresses already registered in AWS to receive verification and communication emails effectively.
+Please be aware that the project employs the AWS SES (Simple Email Service) free service to send emails for user email verification during registration, property enquiries, and password reset. However, the free service is limited to sending emails only to pre-registered email addresses within AWS SES. Therefore, users must use email addresses already registered in AWS to receive verification and communication emails effectively.
 To ensure that users can explore and tour the website without email verification hurdles, these are credentials for accessing the site:
 <br>
 Email: ahujavaibhav825@gmail.com<br>
