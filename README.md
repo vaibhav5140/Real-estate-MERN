@@ -7,12 +7,12 @@ The lack of a seamless platform caused significant time wastage and frustrations
 Our dynamic Real Estate Listing Platform bridges the gap between property sellers and buyers, offering a centralized platform where property owners can list their properties for sale or rent. Prospective buyers can easily search for available properties using advanced filters, view virtual tours, and communicate directly with property owners. Thus making the property renting and buying process efficient and hassle-free.
 <h2>About the Project</h2>
 Built with the MERN stack, this platform combines the efficiency of React.js for the frontend and the robustness of Express.js for the backend. Seamlessly integrating AWS services, including SES for email sending during registration and password reset, and S3 for secure storage of property photos, we ensure a smooth and secure user experience. Platform's database leverages MongoDB, ensuring optimal data management and retrieval for a seamless property listing and search experience.
-<h2>Guest User</h2>
+<h2>Guest User Walkthrough</h2>
 <p align="center"> 
   <img src="https://github.com/vaibhav5140/Real-estate-MERN/assets/85643531/fa63294e-0df4-453a-be0b-6d8bb8eb1854"/>
  </p> 
 
-<h2>Logged In User</h2>
+<h2>Logged In User Walkthrough</h2>
 <p align="center"> 
   <img src="https://github.com/vaibhav5140/Real-estate-MERN/assets/85643531/87224039-f44b-4aa1-a791-72b8d18314e7"/>
  </p> 
